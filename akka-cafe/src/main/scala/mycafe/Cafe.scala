@@ -3,7 +3,7 @@ package mycafe
 import akka.actor.{Actor, ActorLogging, ActorRef}
 import akka.pattern.AskTimeoutException
 import akka.util.Timeout
-import akka.pattern.{pipe, ask}
+import akka.pattern._
 import mycafe.Cafe.{Coffee, PlaceOrder, Sold}
 import mycafe.Cashier.RingRegister
 
@@ -38,8 +38,7 @@ class Cafe extends Actor with ActorLogging {
       } yield Sold(sales.receipt)).mapTo[Sold]
         .recover {
           case _: AskTimeoutException => Customer.ComebackLater
-        }
-      customer ! sold
+        }.pipeTo(self)
   }
 }
 
