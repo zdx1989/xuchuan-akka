@@ -12,7 +12,7 @@ import scala.util.Random
 class Chef extends Actor with ActorLogging {
   log.info(s"Chef says: I'm ready to work...")
   var chefBusy: Boolean = false
-  var currentSpecial: Cafe.Coffee = Cafe.original
+  var currentSpecial: Cafe.Coffee = Cafe.Original
   val specials = Map(0 -> Cafe.Original,1 -> Cafe.Espresso, 2 -> Cafe.Cappuccino)
 
   override def receive: Receive = {
