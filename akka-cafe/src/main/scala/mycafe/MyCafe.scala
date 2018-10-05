@@ -1,5 +1,6 @@
+package mycafe
+
 import akka.actor.{ActorSystem, Props}
-import mycafe.{Cafe, Customer}
 
 import scala.concurrent.duration._
 
@@ -8,6 +9,7 @@ import scala.concurrent.duration._
   */
 object MyCafe extends App {
   import Customer._
+
   import scala.concurrent.ExecutionContext.Implicits.global
   val cafeSys = ActorSystem("cafeSystem")
   val cafe = cafeSys.actorOf(Props[Cafe], "cafe")
