@@ -11,7 +11,7 @@ import scala.concurrent.duration._
   */
 class ParentActor extends Actor with ActorLogging {
   val decider: Decider = {
-    case _ : ChildBusyException => SupervisorStrategy.restart
+    case _ : ChildBusyException => SupervisorStrategy.Restart
   }
 
   override def supervisorStrategy: SupervisorStrategy = {
