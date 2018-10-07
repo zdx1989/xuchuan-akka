@@ -9,5 +9,4 @@ case object Fall extends Season
 case object Winter extends Season
 
 case class SeasonInfo(talk: Int, month: Int)
-case object BeginSeason extends SeasonInfo(0,1)
 
