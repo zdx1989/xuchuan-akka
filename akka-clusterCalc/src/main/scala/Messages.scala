@@ -7,4 +7,6 @@ object Messages {
   case class Sub(x: Int, y: Int) extends MathOps
   case class Mul(x: Int, y: Int) extends MathOps
   case class Div(x: Int, y: Int) extends MathOps
+
+  case class RegisterBackendActor(role: String)
 }
