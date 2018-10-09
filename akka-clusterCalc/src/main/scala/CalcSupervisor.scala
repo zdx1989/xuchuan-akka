@@ -50,7 +50,7 @@ object CalcSupervisor {
   def props(role: String): Props = Props(new CalcSupervisor(role))
 
   def create(role: String): Unit = {
-    val config = ConfigFactory.parseString(s"backend.akka.cluster.roles = [\"$role\"]")
+    val config = ConfigFactory.parseString(s"backend.akka.cluster.roles = [$role]")
       .withFallback(ConfigFactory.load())
       .getConfig("backend")
     val system = ActorSystem("calcClusterSystem", config)
