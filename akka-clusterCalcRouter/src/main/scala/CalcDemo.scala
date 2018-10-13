@@ -8,7 +8,7 @@ object CalcDemo extends App {
   CalcSupervisor.create(0)
   CalcSupervisor.create(0)
   CalcSupervisor.create(0)
-  CalcSupervisor.create(0)
+
 
   Thread.sleep(2000)
 
@@ -19,7 +19,9 @@ object CalcDemo extends App {
   val router = CalcRouter.getRouter()
 
   router ! Add(1, 4)
-
-
+  router ! Sub(3, 1)
+  router ! Mul(6, 3)
+  router ! Div(2, 0)
+  router ! Div(4, 1)
 
 }

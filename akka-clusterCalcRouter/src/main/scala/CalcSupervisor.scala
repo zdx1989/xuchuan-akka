@@ -17,7 +17,7 @@ class CalcSupervisor extends Actor with ActorLogging {
   }
 
   override def supervisorStrategy: SupervisorStrategy =
-    OneForOneStrategy(5, 5.seconds) {
+    OneForOneStrategy(5, 5.seconds, false) {
       decider orElse defaultDecider
     }
 
