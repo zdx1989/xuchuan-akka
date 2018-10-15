@@ -78,10 +78,12 @@ object SingletonActor {
   case object CleanUp extends Command
 
   def create(port: Int = 0): Unit = {
-    val config = ConfigFactory.parseString(s"akka.remote.netty.port=$port")
+    val config = ConfigFactory.parseString(s"akka.remote.netty.tcp.port=$port")
       .withFallback(ConfigFactory.parseString("akka.cluster.roles=[singleton]"))
       .withFallback(ConfigFactory.load())
     val system = ActorSystem("singletonSystem", config)
+    val path = ActorPath.fromString("akka.tcp://singletonSystem@127.0.0.1:2551/user/store")
+    startupSharedJournal(system, port == 2551, path)
     val singletonManager = system.actorOf(ClusterSingletonManager.props(
         Props[SingletonActor],
         CleanUp,
