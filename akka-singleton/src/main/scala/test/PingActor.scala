@@ -16,7 +16,7 @@ class PingActor extends Actor with ActorLogging {
     case "ping" =>
       log.info(s"${self.path.address} say pong!")
     case Disconnect =>
-      cluster.leave(self.path.address)
+      cluster.leave(cluster.selfAddress)
   }
 }
 

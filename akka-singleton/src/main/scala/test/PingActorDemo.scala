@@ -14,9 +14,7 @@ object PingActorDemo extends App {
   proxy ! "ping"
   proxy ! Disconnect
 
-  proxy ! "ping"
-  proxy ! Disconnect
-
+  Thread.sleep(15000)
   proxy ! "ping"
 
 
